@@ -2,37 +2,10 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
--- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
-local gfs = require("gears.filesystem")
-require("awful.autofocus")
-
--- User defined params
-local widgets = "widgets/"
-local theme = "themes/neo/theme"
-local awesome_path = gfs.get_configuration_dir()
-hostname = "daisy~machine"
-username = "noize"
-local scrot_path = "/home/" .. username .. "/bnd/pictures/scrot/"
-
--- Widget and layout library
-local wibox = require("wibox")
-local noize = require(widgets .. "noize-control")
-local fuzz = require(widgets .. "fuzz-control")
-local battery = require(widgets .. "batt-control")
-local sep = require(widgets .. "flow-control")
-
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
--- Other awesome stuff
-menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -63,21 +36,27 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(awesome_path .. theme .. ".lua")
 
+-- User defined params
+local theme = "themes/neo/theme"
+local awesome_path = "/home/noize/.config/awesome/"
+local hostname = "daisy~machine"
+
 -- Defaults
 terminal = "alacritty"
-editor = "pluma"
-editor_cmd = terminal .. " -e vim"
-filebrowser = "spacefm"
+editor = "emacs"
+editor_cmd = terminal .. " -e emacs -nw"
+filebrowser = "thunar"
 browser = "firefox"
-
--- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
 altkey = "Mod1"
 
-require "conf"
-F = {}
-require "ui"
+-- Screen names.
+names = { "( 1 ) [ usr ]", "( 2 ) [ www ]", "( 3 ) [ dev ]", "( 4 ) [ sys ]", "( 5 ) [ mp3 ]", "( 6 ) [ img ]", "( 7 ) [ irc ]", "( 8 ) [ rom ]", "( 9 ) [ tmp ] " }
+
+-- Load config files
+require "conf.layout"
+require "conf.menu"
+
+require "conf.bound"
+require "conf.client"
+require "conf.ruled"
