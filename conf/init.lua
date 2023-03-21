@@ -1,7 +1,0 @@
-require "conf.scratch"
-require "conf.layout"
-require "conf.menu"
-require "conf.tags"
-require "conf.bind"
-require "conf.rules"
-require "conf.client"

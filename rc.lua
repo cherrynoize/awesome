@@ -1,38 +1,19 @@
--- If LuaRocks is installed, make sure that packages installed through it are
--- found (e.g. lgi). If LuaRocks is not installed, do nothing.
+-- If LuaRocks is installed, make sure that packages
+-- installed through it are found. If not, do nothing.
 pcall(require, "luarocks.loader")
 
--- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
+-- Gears filesystem awesome library.
 local gfs = require("gears.filesystem")
-require("awful.autofocus")
 
--- User defined params
-local widgets = "widgets/"
+-- Theme handling library.
+local beautiful = require("beautiful")
+
+-- Notification library.
+local naughty = require("naughty")
+
+-- User defined params.
 local theme = "themes/neo/theme"
 local awesome_path = gfs.get_configuration_dir()
-hostname = "daisy~machine"
-username = "noize"
-local scrot_path = "/home/" .. username .. "/bnd/pictures/scrot/"
-
--- Widget and layout library
-local wibox = require("wibox")
-local noize = require(widgets .. "noize-control")
-local fuzz = require(widgets .. "fuzz-control")
-local battery = require(widgets .. "batt-control")
-local sep = require(widgets .. "flow-control")
-
--- Theme handling library
-local beautiful = require("beautiful")
--- Notification library
-local naughty = require("naughty")
--- Other awesome stuff
-menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -78,6 +59,7 @@ browser = "firefox"
 modkey = "Mod4"
 altkey = "Mod1"
 
-require "conf"
 F = {}
+
+require "lib"
 require "ui"
