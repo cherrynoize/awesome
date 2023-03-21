@@ -31,12 +31,19 @@ names = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
 screen.connect_signal("property::geometry", set_wallpaper)
 
 -- Each screen has its own tag table.
-local l = awful.layout.suit  -- Just to save some typing: use an alias.
-local layouts = { bling.layout.mstab, bling.layout.mstab, bling.layout.deck, l.spiral.dwindle, l.spiral.dwindle,
-                  l.floating, bling.layout.centered, bling.layout.mstab, bling.layout.equalarea }
+local l = awful.layout.suit  -- Save some typing.
+local layouts = { bling.layout.mstab, 
+                  bling.layout.mstab, 
+                  l.corner.ne, 
+                  l.corner.ne, 
+                  l.corner.ne,
+                  l.corner.ne, 
+                  l.corner.ne, 
+                  bling.layout.equalarea, 
+                  l.fair }
 
 -- {{{ Wibar
--- Create a wibox for each screen and add it
+-- Create a wibox for each screen and add it.
 local taglist_buttons = gears.table.join(
    awful.button({ }, 1, function(t) t:view_only() end),
    awful.button({ modkey }, 1, function(t)
