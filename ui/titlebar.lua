@@ -75,7 +75,7 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 --[[
--- hide titlebar for tiled windows
+-- Hide titlebar for tiled windows.
 screen.connect_signal("arrange", function(s)
                          local layout = s.selected_tag.layout.name
                          for _, c in pairs(s.clients) do
