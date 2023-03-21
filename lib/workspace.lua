@@ -34,11 +34,11 @@ screen.connect_signal("property::geometry", set_wallpaper)
 local l = awful.layout.suit  -- Save some typing.
 local layouts = { bling.layout.mstab, 
                   bling.layout.mstab, 
-                  l.corner.ne, 
-                  l.corner.ne, 
-                  l.corner.ne,
-                  l.corner.ne, 
-                  l.corner.ne, 
+                  l.corner.nw, 
+                  l.corner.nw, 
+                  l.corner.nw,
+                  l.corner.nw, 
+                  l.corner.nw, 
                   bling.layout.equalarea, 
                   l.fair }
 
