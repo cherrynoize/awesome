@@ -65,18 +65,15 @@ awful.rules.rules = {
                      "firefox",
                      "thunderbird"
                 }},
-     properties = { tag = names[2], maximized = true } },
+     properties = { tag = names[2] } },
 
    { rule = { instance = "emacs" },
      properties = { tag = names[3] } },
 
    { rule = { class = "spotify" },
-     properties = { tag = names[5], maximized = true } },
+     properties = { tag = names[5] } },
 
    { rule = { class = "discord" },
-     properties = { tag = names[7], maximized = true } },
-
-   { rule = { class = "vlc" },
-     properties = { maximized = true } },
+     properties = { tag = names[7] } },
 }
 -- }}}

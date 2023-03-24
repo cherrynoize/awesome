@@ -39,7 +39,7 @@ local layouts = { bling.layout.mstab,
                   l.corner.nw,
                   l.corner.nw, 
                   l.corner.nw, 
-                  bling.layout.equalarea, 
+                  l.fair,
                   l.fair }
 
 -- {{{ Wibar
