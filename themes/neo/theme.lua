@@ -5,7 +5,7 @@ local gfs = require("gears.filesystem")
 local theme_assets = require("beautiful.theme_assets")
 local themes_path = gfs.get_themes_dir()
 local config_dir = gfs.get_configuration_dir()
-local usr_theme = config_dir .. "/themes/neo/"
+local theme_dir = config_dir .. "/themes/neo/"
 local icons_path = gfs.get_configuration_dir() .. "/icons/"
 
 local theme = {}
@@ -20,48 +20,55 @@ theme.dynamic_sep = false
 theme.font_family = "JetBrains Mono"
 theme.font        = theme.font_family .. " 10"
 
-theme.bg_normal = "#1d2021"
-theme.bg_focus = "#282828"
-theme.bg_subtle = "#212526"
-theme.bg_urgent = "#1d2021"
-theme.bg_minimize = "#1d2021"
-theme.bg_dark = "#191513"
+theme.primary   = "#287378"
+theme.secondary = "#282326"
+
+theme.bg_normal = theme.secondary
+theme.bg_focus = theme.primary
+theme.bg_subtle = theme.primary .. "c0"
+theme.bg_urgent = "#302326"
+theme.bg_minimize = theme.secondary .. "56"
 theme.bg_systray = theme.bg_normal
+theme.bg_focus_systray = theme.primary
+theme.bg_dark = "#282c28"
 
 theme.fg_normal = "#a0a7a7"
 theme.fg_focus = "#bdc0c0"
 theme.fg_urgent = "#fdc761"
-theme.fg_minimize = "#ad97a199"
+theme.fg_minimize = "#ad97a1cc"
 
-theme.border_normal = theme.bg_subtle
-theme.border_focus = theme.bg_focus
-theme.border_marked = theme.bg_subtle
+theme.border_normal = "#494949"
+theme.border_focus = theme.border_normal
+theme.border_marked = theme.border_normal
 
+theme.green = "#89b482"
 theme.green = "#7db79d"
 theme.yellow = "#d8a657"
-theme.red = "#dd87a1"
+theme.red = "#ba8981"
 theme.blue = "#0a5982"
+theme.white = "#c6c6c6"
+theme.black = "#191919"
 
 theme.warn = theme.yellow
 theme.critical = theme.red
 
-theme.useless_gap   = dpi(27)
-theme.border_width  = dpi(0)
+theme.useless_gap   = dpi(15)
+theme.border_width  = dpi(1)
 
 -- Display the taglist squares
-theme.taglist_squares_sel   = "/usr/share/awesome/themes/default/taglist/squarefw.png"
 theme.taglist_squares_unsel = "/usr/share/awesome/themes/default/taglist/squarew.png"
+theme.taglist_squares_sel   = gears.color.recolor_image("/usr/share/awesome/themes/default/taglist/squarefw.png", theme.primary)
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_fg_normal = theme.fg_minimize
-theme.menu_fg_focus = "#89b482"
-theme.menu_submenu_icon = config_dir .. "submenu.svg"
+theme.menu_fg_focus = theme.white
+theme.menu_submenu_icon = gears.color.recolor_image(icons_path .. "submenu.svg", theme.menu_fg_normal)
 theme.menu_height = dpi(40)
 theme.menu_width = dpi(160)
 
-theme.wallpaper = usr_theme .. "bg"
+theme.wallpaper = theme_dir .. "bg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
@@ -98,7 +105,7 @@ theme.launcher_icon = theme_assets.awesome_icon(
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 
-theme.titlebar_bg_focus = theme.bg_subtle
+theme.titlebar_bg_focus  = theme.bg_subtle
 theme.titlebar_bg_normal = theme.bg_focus
 
 theme.taglist_fg_empty = theme.fg_minimize
@@ -117,9 +124,9 @@ theme.control_button_normal_fg = theme.fg_normal
 -- notification_[width|height|margin]
 -- notification_[border_color|border_width|shape|opacity]
 
-theme.start_icon = icons_path .. "menu.svg"
-theme.charge_icon = icons_path .. "charge.svg"
-theme.notification_icon = icons_path .. "notification.svg"
+theme.start_icon           = icons_path .. "menu.svg"
+theme.charge_icon          = icons_path .. "charge.svg"
+theme.notification_icon    = icons_path .. "notification.svg"
 theme.notification_spacing = 10
 
 -- You can add as many variables as
@@ -127,24 +134,39 @@ theme.notification_spacing = 10
 -- beautiful.variable in your rc.lua
 
 -- Define the image to load
-theme.titlebar_close_button_normal = config_dir .. "close.svg"
-theme.titlebar_close_button_normal_hover = config_dir .. "close.svg"
-theme.titlebar_close_button_focus = config_dir .. "close.svg"
-theme.titlebar_close_button_focus_hover = config_dir .. "close.svg"
+theme.titlebar_close_button_normal       = gears.color.recolor_image(icons_path .. "close.svg", theme.fg_normal)
+theme.titlebar_close_button_normal_hover = theme.titlebar_close_button_normal
+theme.titlebar_close_button_focus        = theme.titlebar_close_button_normal
+theme.titlebar_close_button_focus_hover  = theme.titlebar_close_button_normal
 
-theme.titlebar_minimize_button_normal = config_dir .. "minimize.svg"
-theme.titlebar_minimize_button_normal_hover = config_dir .. "minimize.svg"
-theme.titlebar_minimize_button_focus = config_dir .. "minimize.svg"
-theme.titlebar_minimize_button_focus_hover = config_dir .. "minimize.svg"
+theme.titlebar_minimize_button_normal       = gears.color.recolor_image(icons_path .. "minimize.svg", theme.fg_normal)
+theme.titlebar_minimize_button_normal_hover = theme.titlebar_minimize_button_normal
+theme.titlebar_minimize_button_focus        = theme.titlebar_minimize_button_normal
+theme.titlebar_minimize_button_focus_hover  = theme.titlebar_minimize_button_normal
 
-theme.titlebar_maximized_button_normal_inactive = config_dir .. "maximized.svg"
-theme.titlebar_maximized_button_normal_inactive_hover = config_dir .. "maximized.svg"
-theme.titlebar_maximized_button_focus_inactive = config_dir .. "maximized.svg"
-theme.titlebar_maximized_button_focus_inactive_hover = config_dir .. "maximized.svg"
-theme.titlebar_maximized_button_normal_active = config_dir .. "maximized.svg"
-theme.titlebar_maximized_button_normal_active_hover = config_dir .. "maximized.svg"
-theme.titlebar_maximized_button_focus_active = config_dir .. "maximized.svg"
-theme.titlebar_maximized_button_focus_active_hover = config_dir .. "maximized.svg"
+theme.titlebar_maximized_button_normal_inactive       = gears.color.recolor_image(icons_path .. "maximized.svg", theme.fg_normal)
+theme.titlebar_maximized_button_normal_inactive_hover = theme.titlebar_maximized_button_normal_inactive
+theme.titlebar_maximized_button_focus_inactive        = theme.titlebar_maximized_button_normal_inactive
+theme.titlebar_maximized_button_focus_inactive_hover  = theme.titlebar_maximized_button_normal_inactive
+theme.titlebar_maximized_button_normal_active         = theme.titlebar_maximized_button_normal_inactive
+theme.titlebar_maximized_button_normal_active_hover   = theme.titlebar_maximized_button_normal_inactive
+theme.titlebar_maximized_button_focus_active          = theme.titlebar_maximized_button_normal_inactive
+theme.titlebar_maximized_button_focus_active_hover    = theme.titlebar_maximized_button_normal_inactive
+
+theme.titlebar_floating_button_normal_inactive = gears.color.recolor_image(icons_path .. "floating.svg", theme.fg_normal)
+theme.titlebar_floating_button_focus_inactive  = theme.titlebar_floating_button_normal_inactive
+theme.titlebar_floating_button_normal_active   = theme.titlebar_floating_button_normal_inactive
+theme.titlebar_floating_button_focus_active    = theme.titlebar_floating_button_normal_inactive
+
+theme.titlebar_sticky_button_normal_inactive = gears.color.recolor_image(icons_path .. "sticky.svg", theme.fg_normal)
+theme.titlebar_sticky_button_focus_inactive  = theme.titlebar_sticky_button_normal_inactive
+theme.titlebar_sticky_button_normal_active   = theme.titlebar_sticky_button_normal_inactive
+theme.titlebar_sticky_button_focus_active    = theme.titlebar_sticky_button_normal_inactive
+
+theme.titlebar_ontop_button_normal_inactive = gears.color.recolor_image(icons_path .. "ontop.svg", theme.fg_normal)
+theme.titlebar_ontop_button_focus_inactive  = theme.titlebar_ontop_button_normal_inactive
+theme.titlebar_ontop_button_normal_active   = theme.titlebar_ontop_button_normal_inactive
+theme.titlebar_ontop_button_focus_active    = theme.titlebar_ontop_button_normal_inactive
 
 theme.layout_floating = gears.color.recolor_image(themes_path .. "default/layouts/floatingw.png", theme.fg_normal)
 theme.layout_tile = gears.color.recolor_image(themes_path .. "default/layouts/tilew.png", theme.fg_normal)
@@ -176,10 +198,9 @@ theme.task_preview_widget_margin = 15
 
 theme.tabbar_radius = 0
 theme.tabbar_style = "default"
-theme.tabbar_size = 40
+theme.tabbar_size = 35
 theme.tabbar_position = "top"
 
 theme.icon_theme = nil
 
 return theme
--- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80

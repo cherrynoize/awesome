@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   width="800"
+   height="800"
+   viewBox="0 0 24 24"
+   id="Layer_1"
+   data-name="Layer 1"
+   version="1.1"
+   sodipodi:docname="sticky.svg"
+   inkscape:export-filename="../../../hacking/gfx/icons/min-round/sticky.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview312"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false" />
+  <defs
+     id="defs301">
+    <style
+       id="style296">.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}</style>
+    <clipPath
+       id="clip-path">
+      <rect
+         class="cls-1"
+         width="24"
+         height="24"
+         id="rect298"
+         x="0"
+         y="0" />
+    </clipPath>
+  </defs>
+  <title
+     id="title303">sticky-note</title>
+  <g
+     class="cls-2"
+     clip-path="url(#clip-path)"
+     id="g309"
+     transform="matrix(0.9604,0,0,0.9604,0.4752,0.4752)"
+     style="stroke-width:1.02041">
+    <path
+       d="M 17.4,22 H 6.6 A 4.6,4.6 0 0 1 2,17.4 V 6.6 A 4.6,4.6 0 0 1 6.6,2 H 17.4 A 4.6,4.6 0 0 1 22,6.6 V 17.4 A 4.6,4.6 0 0 1 17.4,22 Z M 6.6,4 A 2.61,2.61 0 0 0 4,6.6 V 17.4 A 2.61,2.61 0 0 0 6.6,20 H 17.4 A 2.61,2.61 0 0 0 20,17.4 V 6.6 A 2.61,2.61 0 0 0 17.4,4 Z"
+       id="path305"
+       style="stroke-width:1.02041" />
+    <path
+       d="m 14.47,22 a 1,1 0 0 1 -1,-1 v -3.32 a 3,3 0 0 1 0.88,-2.18 3,3 0 0 1 2.16,-0.91 H 21 a 1,1 0 0 1 0,2 h -4.53 a 1,1 0 0 0 -0.74,0.31 1,1 0 0 0 -0.3,0.75 v 3.33 a 1,1 0 0 1 -1,1 z"
+       id="path307"
+       style="stroke-width:1.02041" />
+  </g>
+</svg>

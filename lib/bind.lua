@@ -116,7 +116,7 @@ globalkeys = gears.table.join(
       {description = "lua execute prompt", group = "awesome"}),
 
    -- Menubar
-   awful.key({ modkey }, "p", function() menubar.show() end,
+   awful.key({ modkey }, "p", function() awful.spawn("dmenu_run") end,
       {description = "show the menubar", group = "launcher"}),
 
    -- Switch keyboard layout.

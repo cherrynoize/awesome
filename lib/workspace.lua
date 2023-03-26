@@ -10,6 +10,7 @@ local kbdlayout = require (widgets .. "kbdlayout")
 local battctl = require (ctrl .. "battctl")
 local soundctl = require (ctrl .. "soundctl")
 local lightctl = require (ctrl .. "lightctl")
+local tray = require (ctrl .. "tray")
 local sep = require (ctrl .. "spacer")
 
 local function set_wallpaper(s)
@@ -109,7 +110,7 @@ awful.screen.connect_for_each_screen(function(s)
       s.mytaglist = awful.widget.taglist {
          screen  = s,
          filter  = awful.widget.taglist.filter.all,
-         layout = { spacing = 5, layout = wibox.layout.fixed.horizontal },
+         layout = { spacing = 12, layout = wibox.layout.fixed.horizontal },
          buttons = taglist_buttons
       }
 
@@ -124,26 +125,28 @@ awful.screen.connect_for_each_screen(function(s)
       s.mywibox = awful.wibar({
             position = "top",
             screen = s,
-			height = 30,
+            height = 30,
             spacing = 20,
+            opacity = 0.9,
             --[[
             -- {{{ Make it an invisible bar (used for spacing)
-			height = 62,
+            height = 62,
             spacing = 200,
             opacity = 0,
-			ontop = false,
+            ontop = false,
             -- }}}
             ]]--
       })
 
       -- Setup wibox layout and widgets.
       s.mywibox:setup {
-            layout = wibox.layout.stack,
+         layout = wibox.layout.stack,
          { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             menu_launcher,
             s.mytaglist,
             s.mypromptbox,
+            spacing = 5,
          },
             layout = wibox.layout.align.horizontal,
             s.mytasklist,
@@ -160,7 +163,7 @@ awful.screen.connect_for_each_screen(function(s)
                lightctl.widget,
                soundctl.widget,
                battctl.widget,
-               wibox.widget.systray(),
+               tray.shelf,
             },
             mytextclock,
             s.mylayoutbox,

@@ -2,6 +2,15 @@ local awful = require "awful"
 local gears = require "gears"
 local wibox = require "wibox"
 local beautiful = require "beautiful"
+local ctrl = "widgets.ctrl."
+local winctl = require (ctrl .. "winctl")
+
+-- List of clients not to draw a titlebar on
+-- (in the form WM_CLASS = bool)
+local titlebar_exclude = {
+   firefox = true,
+   thunderbird = true,
+}
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
@@ -38,15 +47,26 @@ client.connect_signal("request::titlebars", function(c)
                             end)
                          )
 
+                         -- Draw titlebar
                          awful.titlebar(c, {
-                                           size = 40,
-                                           position = "top",
+                            size = 36,
+                            position = "top",
                          }):setup {
                             {
                                { -- Start
-                                  awful.titlebar.widget.closebutton(c),
+                                  awful.titlebar.widget.floatingbutton(c),
+                                  awful.titlebar.widget.stickybutton  (c),
+                                  awful.titlebar.widget.ontopbutton   (c),
+                                  --[[
+                                  wibox.widget {
+                                  widget = wibox.widget.separator,
+                                  thickness = 0,
+                                  opacity = 0,
+                                  forced_width = 50
+                                  },
+                                  ]]--
                                   spacing = 15,
-                                  layout = wibox.layout.align.horizontal,
+                                  layout = wibox.layout.flex.horizontal,
                                },
                                { -- Middle
                                   { -- Title
@@ -57,34 +77,56 @@ client.connect_signal("request::titlebars", function(c)
                                   layout  = wibox.layout.flex.horizontal
                                },
                                { -- End
-                                  awful.titlebar.widget.minimizebutton(c),
+                                  awful.titlebar.widget.minimizebutton (c),
                                   awful.titlebar.widget.maximizedbutton(c),
+                                  awful.titlebar.widget.closebutton    (c),
                                   spacing = 15,
                                   layout = wibox.layout.flex.horizontal,
                                },
-                               layout = wibox.layout.align.horizontal,
-                            },
-                            top = 10,
-                            bottom = 10,
-                            left = 13,
-                            right = 13,
-                            widget = wibox.container.margin,
-                                  }
-end)
+                            layout = wibox.layout.align.horizontal,
+                         },
+                         top = 10,
+                         bottom = 10,
+                         left = 13,
+                         right = 13,
+                         widget = wibox.container.margin,
+                      }
+                   end)
 
 --[[
--- Hide titlebar for tiled windows.
+-- Hide titlebar for maximized windows.
 screen.connect_signal("arrange", function(s)
-                         local layout = s.selected_tag.layout.name
                          for _, c in pairs(s.clients) do
-                            if layout == "floating" or c.floating then
-                               awful.titlebar.show(c)
-                            else
+                            if c.maximized then
                                awful.titlebar.hide(c)
+                            else
+                               awful.titlebar.show(c)
                             end
                          end
 end)
 ]]--
+
+-- Toggle client floating state
+function toggle_floating(c, layout)
+   if not titlebar_exclude[c.class] or
+      ((layout == "floating" or c.floating) and
+      not c.maximized) then
+      awful.titlebar.show(c)
+   else
+      awful.titlebar.hide(c)
+   end
+end
+
+-- Hide titlebar for selected windows when tiled
+screen.connect_signal("arrange", function(s)
+   local layout = s.selected_tag.layout.name
+   for _, c in pairs(s.clients) do
+      toggle_floating(c, layout)
+   end
+end)
+client.connect_signal("request::geometry", function(c)
+   toggle_floating(c)
+end)
 
 -- Enable sloppy focus, so that focus follows mouse.
 --[[
