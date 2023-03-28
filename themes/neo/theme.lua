@@ -20,10 +20,21 @@ theme.dynamic_sep = false
 theme.font_family = "JetBrains Mono"
 theme.font        = theme.font_family .. " 10"
 
-theme.primary   = "#287378"
+theme.green    = "#89b482"
+theme.green    = "#7db79d"
+theme.yellow   = "#d8a657"
+theme.red      = "#ba8981"
+theme.pink     = "#b39dbd"
+theme.blue     = "#0a5982"
+theme.white    = "#c6c6c6"
+theme.grey     = "#34373F"
+theme.darkgrey = "#2b3038"
+theme.black    = "#191919"
+
+theme.primary   = "#286c78"
 theme.secondary = "#282326"
 
-theme.bg_normal = theme.secondary
+theme.bg_normal = theme.darkgrey
 theme.bg_focus = theme.primary
 theme.bg_subtle = theme.primary .. "c0"
 theme.bg_urgent = "#302326"
@@ -40,14 +51,6 @@ theme.fg_minimize = "#ad97a1cc"
 theme.border_normal = "#494949"
 theme.border_focus = theme.border_normal
 theme.border_marked = theme.border_normal
-
-theme.green = "#89b482"
-theme.green = "#7db79d"
-theme.yellow = "#d8a657"
-theme.red = "#ba8981"
-theme.blue = "#0a5982"
-theme.white = "#c6c6c6"
-theme.black = "#191919"
 
 theme.warn = theme.yellow
 theme.critical = theme.red
@@ -104,6 +107,8 @@ theme.launcher_icon = theme_assets.awesome_icon(
 -- mouse_finder_[color|timeout|animate_timeout|radius|factor]
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
+
+theme.tasklist_bg_focus  = theme.bg_focus
 
 theme.titlebar_bg_focus  = theme.bg_subtle
 theme.titlebar_bg_normal = theme.bg_focus
