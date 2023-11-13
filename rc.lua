@@ -1,15 +1,17 @@
 -- If LuaRocks is installed, make sure that packages
 -- installed through it are found. If not, do nothing.
 pcall(require, "luarocks.loader")
-
 -- Gears filesystem awesome library.
 local gfs = require("gears.filesystem")
-
 -- Theme handling library.
 local beautiful = require("beautiful")
-
 -- Notification library.
 local naughty = require("naughty")
+
+local hotkeys_popup = require("awful.hotkeys_popup")
+-- Enable hotkeys help widget for VIM and other apps
+-- when client with a matching name is opened:
+require("awful.hotkeys_popup.keys")
 
 -- User defined params.
 local theme = "themes/neo/theme"

@@ -10,46 +10,43 @@ local icons_path = gfs.get_configuration_dir() .. "/icons/"
 
 local theme = {}
 
--- use light backlight controller (for brightness widget)
-theme.use_light   = true
--- use percentage values instead of absolute
-theme.perc        = true
--- allow separator to be changed dynamically
-theme.dynamic_sep = false
+theme.font_family = "Consolas"
+theme.font        = theme.font_family .. " 11"
 
-theme.font_family = "JetBrains Mono"
-theme.font        = theme.font_family .. " 10"
+theme.lightgreen = "#89b482"
+theme.green      = "#7db79d"
+theme.yellow     = "#d8a657"
+theme.red        = "#ba8981"
+theme.pink       = "#b39dbd"
+theme.purple     = "#836880"
+theme.blue       = "#0a5982"
+theme.indigo     = "#496583"
+theme.turquoise  = "#286c78"
+theme.white      = "#c6c6c6"
+theme.grey       = "#34373F"
+theme.darkgrey   = "#2b3038"
+theme.dark       = "#282326"
+theme.black      = "#191919"
 
-theme.green    = "#89b482"
-theme.green    = "#7db79d"
-theme.yellow   = "#d8a657"
-theme.red      = "#ba8981"
-theme.pink     = "#b39dbd"
-theme.blue     = "#0a5982"
-theme.white    = "#c6c6c6"
-theme.grey     = "#34373F"
-theme.darkgrey = "#2b3038"
-theme.black    = "#191919"
+theme.primary   = theme.turquoise
+theme.secondary = theme.dark
 
-theme.primary   = "#286c78"
-theme.secondary = "#282326"
-
-theme.bg_normal = theme.darkgrey
-theme.bg_focus = theme.primary
-theme.bg_subtle = theme.primary .. "c0"
-theme.bg_urgent = "#302326"
-theme.bg_minimize = theme.secondary .. "56"
-theme.bg_systray = theme.bg_normal
+theme.bg_normal        = theme.darkgrey
+theme.bg_focus         = theme.primary
+theme.bg_subtle        = theme.primary .. "c0"
+theme.bg_urgent        = "#302326"
+theme.bg_minimize      = theme.secondary .. "56"
+theme.bg_systray       = theme.bg_normal
 theme.bg_focus_systray = theme.primary
-theme.bg_dark = "#282c28"
+theme.bg_dark          = "#282c28"
 
-theme.fg_normal = "#a0a7a7"
-theme.fg_focus = "#bdc0c0"
-theme.fg_urgent = "#fdc761"
+theme.fg_normal   = "#a0a7a7"
+theme.fg_focus    = "#bdc0c0"
+theme.fg_urgent   = "#fdc761"
 theme.fg_minimize = "#ad97a1cc"
 
 theme.border_normal = "#494949"
-theme.border_focus = theme.border_normal
+theme.border_focus  = theme.border_normal
 theme.border_marked = theme.border_normal
 
 theme.warn = theme.yellow
@@ -69,27 +66,28 @@ theme.menu_fg_normal = theme.fg_minimize
 theme.menu_fg_focus = theme.white
 theme.menu_submenu_icon = gears.color.recolor_image(icons_path .. "submenu.svg", theme.menu_fg_normal)
 theme.menu_height = dpi(40)
-theme.menu_width = dpi(160)
+theme.menu_width  = dpi(190)
+theme.menu_font   = theme.font_family .. " 9"
 
 theme.wallpaper = theme_dir .. "bg"
 
 -- You can use your own layout icons like this:
-theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
-theme.layout_fairv = themes_path.."default/layouts/fairvw.png"
-theme.layout_floating  = themes_path.."default/layouts/floatingw.png"
-theme.layout_magnifier = themes_path.."default/layouts/magnifierw.png"
-theme.layout_max = themes_path.."default/layouts/maxw.png"
+theme.layout_fairh      = themes_path.."default/layouts/fairhw.png"
+theme.layout_fairv      = themes_path.."default/layouts/fairvw.png"
+theme.layout_floating   = themes_path.."default/layouts/floatingw.png"
+theme.layout_magnifier  = themes_path.."default/layouts/magnifierw.png"
+theme.layout_max        = themes_path.."default/layouts/maxw.png"
 theme.layout_fullscreen = themes_path.."default/layouts/fullscreenw.png"
 theme.layout_tilebottom = themes_path.."default/layouts/tilebottomw.png"
 theme.layout_tileleft   = themes_path.."default/layouts/tileleftw.png"
-theme.layout_tile = themes_path.."default/layouts/tilew.png"
-theme.layout_tiletop = themes_path.."default/layouts/tiletopw.png"
-theme.layout_spiral  = themes_path.."default/layouts/spiralw.png"
-theme.layout_dwindle = themes_path.."default/layouts/dwindlew.png"
-theme.layout_cornernw = themes_path.."default/layouts/cornernww.png"
-theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
-theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
-theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
+theme.layout_tile       = themes_path.."default/layouts/tilew.png"
+theme.layout_tiletop    = themes_path.."default/layouts/tiletopw.png"
+theme.layout_spiral     = themes_path.."default/layouts/spiralw.png"
+theme.layout_dwindle    = themes_path.."default/layouts/dwindlew.png"
+theme.layout_cornernw   = themes_path.."default/layouts/cornernww.png"
+theme.layout_cornerne   = themes_path.."default/layouts/cornernew.png"
+theme.layout_cornersw   = themes_path.."default/layouts/cornersww.png"
+theme.layout_cornerse   = themes_path.."default/layouts/cornersew.png"
 
 -- Launcher icon.
 theme.launcher_icon = theme_assets.awesome_icon(
@@ -109,6 +107,8 @@ theme.launcher_icon = theme_assets.awesome_icon(
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 
 theme.tasklist_bg_focus  = theme.bg_focus
+
+theme.tasklist_disable_icon = true
 
 theme.titlebar_bg_focus  = theme.bg_subtle
 theme.titlebar_bg_normal = theme.bg_focus
@@ -184,6 +184,14 @@ theme.layout_spiral = gears.color.recolor_image(themes_path .. "default/layouts/
 theme.layout_dwindle = gears.color.recolor_image(themes_path .. "default/layouts/dwindle.png", theme.fg_normal)
 theme.layout_max = gears.color.recolor_image(themes_path .. "default/layouts/maxw.png", theme.fg_normal)
 
+theme.hotkeys_bg               = theme.black.."90"
+theme.hotkeys_fg               = theme.white
+theme.hotkeys_modifiers_fg     = theme.white.."df"
+theme.hotkeys_label_fg         = theme.black
+theme.hotkeys_font             = theme.font_family .. " 12"
+theme.hotkeys_description_font = theme.font_family .. " 10"
+
+--[[
 theme.tag_preview_widget_border_radius = 0
 theme.tag_preview_client_border_radius = 0
 theme.tag_preview_client_opacity = 0.5
@@ -200,6 +208,7 @@ theme.task_preview_widget_bg = theme.bg_dark
 theme.task_preview_widget_border_color = theme.bg_focus
 theme.task_preview_widget_border_width = 3
 theme.task_preview_widget_margin = 15
+]]--
 
 theme.tabbar_radius = 0
 theme.tabbar_style = "default"

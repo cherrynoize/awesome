@@ -2,8 +2,7 @@ local awful = require "awful"
 local gears = require "gears"
 local wibox = require "wibox"
 local beautiful = require "beautiful"
-local ctrl = "widgets.ctrl."
-local winctl = require (ctrl .. "winctl")
+local winctl = require "ctrl.winctl"
 
 -- List of clients not to draw a titlebar on
 -- (in the form WM_CLASS = bool)

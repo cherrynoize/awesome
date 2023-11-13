@@ -2,16 +2,16 @@ local awful = require "awful"
 local gears = require "gears"
 local beautiful = require "beautiful"
 local bling = require "bling"
--- Widget and layout library
+-- Widget library
 local wibox = require "wibox"
-local widgets = "widgets."
-local ctrl = widgets .. "ctrl."
-local kbdlayout = require (widgets .. "kbdlayout")
-local battctl = require (ctrl .. "battctl")
-local soundctl = require (ctrl .. "soundctl")
-local lightctl = require (ctrl .. "lightctl")
-local tray = require (ctrl .. "tray")
-local sep = require (ctrl .. "spacer")
+local lain = require "lain"
+local kbdlayout = require "kbdlayout"
+local ctrl = require "ctrl"
+local battctl = ctrl.battctl
+local soundctl = ctrl.soundctl
+local lightctl = ctrl.lightctl
+local tray = ctrl.tray
+local sep = ctrl.spacer
 
 local function set_wallpaper(s)
    -- Wallpaper
@@ -61,6 +61,13 @@ local taglist_buttons = gears.table.join(
    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
 )
+
+-- Cpu widget
+local cpu = lain.widget.cpu {
+   settings = function()
+      widget:set_markup("<span font='" .. beautiful.font .. "' color='" .. beautiful.yellow .. "'>" .. cpu_now.usage .. "%</span>")
+   end
+}
 
 -- Create a textclock widget
 local mytextclock = wibox.widget.textclock()
@@ -163,6 +170,7 @@ awful.screen.connect_for_each_screen(function(s)
                lightctl.widget,
                soundctl.widget,
                battctl.widget,
+               cpu.widget,
                tray.shelf,
             },
             mytextclock,

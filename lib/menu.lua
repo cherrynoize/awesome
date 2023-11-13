@@ -76,7 +76,7 @@ mainmenu = awful.menu({ items = {
                                 {
                                    { "Alsamixer", terminal .. " -e alsamixer" },
                                    { "Cmus", terminal .. " -e cmus" },
-                                   { "QTV4L2", "qv4l2" },
+                                   { "QV4L2", "qv4l2" },
                                    { "nomacs", "nomacs" },
                                    { "VLC", "vlc" },
                                 },
@@ -184,6 +184,7 @@ mainmenu = awful.menu({ items = {
                                 {
                                    { "unimatrix", terminal .. " -e unimatrix" },
                                    { "figlet", terminal .. " --hold -e figlet " .. hostname },
+                                   { "vis", terminal .. " -e vis" },
                                 },
                              },
                              {
@@ -194,6 +195,13 @@ mainmenu = awful.menu({ items = {
                                       {
                                          { "Restart", awesome.restart },
                                          { "Logout", awesome.quit }
+                                      },
+                                   },
+                                   {
+                                      "Manual",
+                                      {
+                                         { "awesome", terminal .. " -e man awesome" },
+                                         { "info", terminal .. " -e info" },
                                       },
                                    },
                                    {
@@ -208,10 +216,9 @@ mainmenu = awful.menu({ items = {
                                       },
                                    },
                                    {
-                                      "Manual",
+                                      "Appearance",
                                       {
-                                         { "awesome", terminal .. " -e man awesome" },
-                                         { "info", terminal .. " -e info" },
+                                         { "lxappearance", "lxappearance"},
                                       },
                                    },
                                    {
@@ -229,7 +236,7 @@ mainmenu = awful.menu({ items = {
                                    { "Poweroff", "poweroff" }
                                 },
                              },
-                             { "Scrot", "snap 0.1"},
+                             { "Screenshot", "snip"},
                        }})
 
 menu_launcher = awful.widget.launcher({ image = theme.launcher_icon,

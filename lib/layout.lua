@@ -1,8 +1,10 @@
 local awful = require "awful"
+--local machi = require "machi"
 local bling = require "bling"
 local l = awful.layout.suit
 
 awful.layout.layouts = {
+-- machi.default_layout,
    l.floating,
    l.tile,
    l.tile.left,

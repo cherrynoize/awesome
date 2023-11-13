@@ -5,16 +5,21 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 require("awful.autofocus")
--- Widget and layout library
-local widgets = "widgets."
-local ctrl = widgets .. "ctrl."
-local kbdlayout = require (widgets .. "kbdlayout")
-local soundctl = require (ctrl .. "soundctl")
-local lightctl = require (ctrl .. "lightctl")
-local sep = require (ctrl .. "spacer")
+local machi = require "machi"
+-- Expose view of all clients
+local revelation = require "revelation"
+-- Widget library
+local kbdlayout = require "kbdlayout"
+local ctrl = require "ctrl"
+local soundctl = ctrl.soundctl
+local lightctl = ctrl.lightctl
+local sep = ctrl.spacer
 
 local modkey = modkey or "Mod4"
 local altkey = altkey or "Mod1"
+
+-- Initialize revelation
+revelation.init()
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
@@ -63,6 +68,10 @@ globalkeys = gears.table.join(
       end,
       {description = "go back", group = "client"}),
 
+   awful.key({ modkey,           }, "e",      revelation,
+      {description = "expose view of all clients", group = "client"}),
+
+
    -- Standard program
    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
       {description = "open a terminal", group = "launcher"}),
@@ -88,6 +97,13 @@ globalkeys = gears.table.join(
    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
       {description = "select previous", group = "layout"}),
 
+--[[
+    awful.key({ modkey,           }, ".",    function () machi.default_editor.start_interactive() end,
+              {description = "edit current layout if machi layout", group = "layout"}),
+    awful.key({ modkey,           }, "/",    function () machi.switcher.start(client.focus) end,
+              {description = "switch between windows for a machi layout", group = "layout"}),
+]]--
+      
    awful.key({ modkey, "Control" }, "n",
       function ()
          local c = awful.client.restore()
